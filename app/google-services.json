@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "902637715951",
+    "firebase_url": "https://aadteam58animationchallenge.firebaseio.com",
+    "project_id": "aadteam58animationchallenge",
+    "storage_bucket": "aadteam58animationchallenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902637715951:android:ce1e9b3006bab8d619f61a",
+        "android_client_info": {
+          "package_name": "com.example.aadteam58animationchallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902637715951-h0gc992qiec87ghsv2n9tedsqurql2jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aadteam58animationchallenge",
+            "certificate_hash": "c6311d508c90c66d6b4521c802003588a76e0c98"
+          }
+        },
+        {
+          "client_id": "902637715951-u0d1ocb1i366mn0ron887jjv23p2q12m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCqmTO1SOer5ZSZFeK0UX03b4QtDRSC8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902637715951-u0d1ocb1i366mn0ron887jjv23p2q12m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
