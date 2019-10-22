@@ -208,6 +208,8 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
                   builder.setContentView(R.layout.alert);
                   TextView yes = (TextView) builder.findViewById(R.id.textView_yes);
         TextView no = (TextView) builder.findViewById(R.id.textView_no);
+
+        zoomYes(yes);
           no.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
@@ -225,5 +227,10 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
 
           builder.show();
 
+    }
+
+    private void zoomYes(TextView yes) {
+        Animation animationZoomyes=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_in);
+        yes.startAnimation(animationZoomyes);
     }
 }
