@@ -11,8 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aadteam58animationchallenge.model.Contact;
@@ -28,7 +31,7 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AddContact extends AppCompatActivity  {
+public class AddContact extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "AddContact";
     public static final int REQUEST_CODE_PROFILE = 55;
 
@@ -41,6 +44,8 @@ public class AddContact extends AppCompatActivity  {
 
     private Uri uri;
     private Contact contact;
+    private Animation animationSlideDown;
+    private TextView demo;
 
 
     @Override
@@ -54,8 +59,16 @@ public class AddContact extends AppCompatActivity  {
         contactName = (EditText) findViewById(R.id.edit_name);
         contactEmail = (EditText) findViewById(R.id.edit_email);
         contactPhone = (EditText) findViewById(R.id.edit_phone);
+        animationSlideDown = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_down);
+
+
+        demo = (TextView)findViewById(R.id.textView_demo);
 
         contact = new Contact();
+        contactName.setOnClickListener(this);
+        contactPhone.setOnClickListener(this);
+        contactEmail.setOnClickListener(this);
+        demo.setOnClickListener(this);
 
 
     }
@@ -167,4 +180,25 @@ public class AddContact extends AppCompatActivity  {
         }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case(R.id.edit_name):
+                contactName.startAnimation(animationSlideDown);
+                break;
+            case(R.id.edit_email):
+                contactEmail.startAnimation(animationSlideDown);
+                break;
+            case(R.id.edit_phone):
+                contactPhone.startAnimation(animationSlideDown);
+                break;
+            case(R.id.textView_demo):
+                contactName.startAnimation(animationSlideDown);
+
+                    contactEmail.startAnimation(animationSlideDown);
+                contactPhone.startAnimation(animationSlideDown);
+                break;
+
+        }
+    }
 }
