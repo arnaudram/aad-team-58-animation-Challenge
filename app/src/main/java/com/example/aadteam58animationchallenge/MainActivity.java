@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        contactAdapter = new ContactAdapter(this);
+        contactAdapter = new ContactAdapter(this,MainActivity.this);
         recyclerView.setAdapter(contactAdapter);
        //sequential(fab);
     }

@@ -1,5 +1,10 @@
 package com.example.aadteam58animationchallenge.util;
 
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,10 +42,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     private static final String TAG = "ContactAdapter";
      private Context context;
 
+     private Activity activity;
+
      private int p=-1;
 
    private List<Contact> contacts;
-   public ContactAdapter(final Context context){
+   public ContactAdapter(final Context context,Activity activity){
+       this.activity=activity;
        this.context= context;
        contacts= new ArrayList<Contact>();
        FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
@@ -135,6 +145,25 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             tvContactName = (TextView)itemView.findViewById(R.id.textView_name);
             tvContactPhone = (TextView)itemView.findViewById(R.id.textView_phone);
             circleImageViewContactProfile = (CircleImageView)itemView.findViewById(R.id.circleimageProfile_item);
+            circleImageViewContactProfile.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position= getAdapterPosition();
+                    Contact contact= contacts.get(position);
+                Dialog dialog = new Dialog(activity);
+                  dialog.setContentView(R.layout.item_image);
+                    Button button=(Button)dialog.findViewById(R.id.button_View);
+                  ImageView imageView=(ImageView)dialog.findViewById(R.id.imageView_item);
+
+                  Picasso.get().load(contact.getImage())
+                          .into(imageView);
+
+
+                    dialog.show();
+
+                    return true;
+                }
+            });
 
 
         }
