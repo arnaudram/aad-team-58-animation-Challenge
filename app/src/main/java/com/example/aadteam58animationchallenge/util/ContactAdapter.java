@@ -150,13 +150,22 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
                 public boolean onLongClick(View view) {
                     int position= getAdapterPosition();
                     Contact contact= contacts.get(position);
-                Dialog dialog = new Dialog(activity);
+                final Dialog dialog = new Dialog(activity);
                   dialog.setContentView(R.layout.item_image);
                     Button button=(Button)dialog.findViewById(R.id.button_View);
-                  ImageView imageView=(ImageView)dialog.findViewById(R.id.imageView_item);
+                  final ImageView imageView=(ImageView)dialog.findViewById(R.id.imageView_item);
 
                   Picasso.get().load(contact.getImage())
                           .into(imageView);
+
+                  button.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View view) {
+                          Animation fade=AnimationUtils.loadAnimation(context,R.anim.fade_anim);
+                         imageView.startAnimation(fade);
+
+                      }
+                  });
 
 
                     dialog.show();
