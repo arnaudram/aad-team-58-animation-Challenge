@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -200,5 +201,29 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
                 break;
 
         }
+    }
+
+    public void cancel(View view) {
+       final Dialog builder = new Dialog(this);
+                  builder.setContentView(R.layout.alert);
+                  TextView yes = (TextView) builder.findViewById(R.id.textView_yes);
+        TextView no = (TextView) builder.findViewById(R.id.textView_no);
+          no.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  finish();
+              }
+          });
+          yes.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  builder.dismiss();
+
+              }
+          });
+          builder.setCancelable(true);
+
+          builder.show();
+
     }
 }
