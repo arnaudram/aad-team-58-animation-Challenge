@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
     private static final String TAG = "ContactAdapter";
      private Context context;
+
+     private int p=-1;
 
    private List<Contact> contacts;
    public ContactAdapter(final Context context){
@@ -101,6 +105,17 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
           // holder.circleImageViewContactProfile.setImageURI(Uri.parse(contacts.get(position).getImage()));
 
+        setZoomAnimatiom(holder.itemView,position);
+
+    }
+
+    private void setZoomAnimatiom(View itemView, int position) {
+
+            Animation animationZoom= AnimationUtils.loadAnimation(context.getApplicationContext(),R.anim.scaling_item_recycleview);
+            itemView.startAnimation(animationZoom);
+
+
+
     }
 
     @Override
@@ -120,6 +135,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             tvContactName = (TextView)itemView.findViewById(R.id.textView_name);
             tvContactPhone = (TextView)itemView.findViewById(R.id.textView_phone);
             circleImageViewContactProfile = (CircleImageView)itemView.findViewById(R.id.circleimageProfile_item);
+
+
         }
 
         @Override
